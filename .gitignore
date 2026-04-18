@@ -1,0 +1,28 @@
+# 🔹 Obsidian
+.obsidian/
+
+# 🔹 Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+
+# 🔹 Archivos compilados de Java
+*.class
+
+# 🔹 Carpeta de build (según proyecto)
+bin/
+build/
+out/
+target/
+
+# 🔹 Logs
+*.log
+
+# 🔹 Sistema (Windows)
+.DS_Store
+Thumbs.db
+
+# 🔹 Archivos temporales
+*.tmp
+*.swp
