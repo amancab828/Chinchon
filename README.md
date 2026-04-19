@@ -17,7 +17,8 @@ Puedes consultar las reglas detalladas aquí:
 ---
 # Documentación técnica
 Explicación del diseño y arquitectura del proyecto:
-[Documentación técnica](Docs.md) 
+[Arquitectura de paquetes](Docs/Arquitectura.md)
+[Diseño de clases](Docs/Diagrama_Clases.md)
 
 ---
 # Autor

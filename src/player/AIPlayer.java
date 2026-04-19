@@ -6,7 +6,8 @@ import ai.AIStrategy;
 public class AIPlayer extends AbstractPlayer {
     private AIStrategy strategy;
 
-    public AIPlayer(AIStrategy strategy) {
+    public AIPlayer(String name, AIStrategy strategy) {
+    	super(name);
         this.strategy = strategy;
     }
 }

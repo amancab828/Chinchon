@@ -5,6 +5,41 @@ Se usa una arquitectura modular, en la que las distintas funcionalidades se orga
 
 ---
 # Estructura
+La arquitectura del sistema se divide en varios paquetes, cada uno encargado de una responsabilidad específica dentro del dominio del juego. Esta organización modular sigue los principios de separación de responsabilidades y bajo acoplamiento, favoreciendo la mantenibilidad, reutilización y escalabilidad del código.
+`src`
+`└── app`
+`│   └── Main`
+`│`
+`└── cards`
+`│   ├── Card`
+`│   ├── Suit (enum)`
+`│   └── Deck`
+`│`
+`└── combinations`
+`│   ├── CombinationRule (interface)`
+`│   ├── Combination`
+`│   └── CombinationType (enum)`
+`│`
+`└── game`
+`│   ├── Game`
+`│   └── Round`
+`│`
+`└── player`
+`│   ├── Player (interface)`
+`│   ├── AbstractPlayer`
+`│   │   ├── HumanPlayer`
+`│   │   └── AIPlayer`
+`│`
+`└── ai`
+`│   ├── AIStrategy (interface)`
+`│   └── Strategy`
+`│   ├── (posible) EstrategiaBasica`
+`│   └── (posible) EstrategiaChinchon`
+`│`
+`└── ui`
+    `├── ConsoleInput`
+    `└── Menu`
+
 ---
 ## Paquete cards
 * Clase Card --> (Carta)
@@ -13,7 +48,7 @@ Se usa una arquitectura modular, en la que las distintas funcionalidades se orga
 ---
 ## Paquete combinations
 * Interfaz CombinationRule --> (ReglaCombinacion)
-* Clase Combination --> (Combinacion)
+* Clase Combination implements CombinationRule --> (Combinacion)
 * Enum CombinationType --> (TipoCombinacion)
 ---
 ## Paquete game
@@ -36,14 +71,10 @@ Se usa una arquitectura modular, en la que las distintas funcionalidades se orga
 >    -  Clase EstrategiaChinchon
 
 ---
-## Paquete utils
-* Clase CombinationManager --> (GestorCombinaciones)
-* Clase ScoreCalculator --> (CalculadoraPuntos)
-* Clase MoveValidator --> (ValidarJugada)
----
 ## Paquete ui
+* Clase Colors
 * Clase ConsoleInput
 * Clase Menu
 ---
-## Paquete main
+## Paquete app
 * Clase Main
