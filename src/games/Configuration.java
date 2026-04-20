@@ -1,12 +1,12 @@
-package game;
+package games;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ai.Strategy;
-import player.AIPlayer;
-import player.HumanPlayer;
-import player.Player;
+import players.AIPlayer;
+import players.HumanPlayer;
+import players.Player;
 import ui.ConsoleInput;
 
 public class Configuration {

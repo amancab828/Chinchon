@@ -1,9 +1,7 @@
-package game;
+package games;
 
 import java.util.List;
-
-import cards.Deck;
-import player.Player;
+import players.Player;
 
 public class Game {
 	private List<Player> players; // Lista de jugadores

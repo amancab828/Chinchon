@@ -1,19 +1,24 @@
-package player;
+package players;
 
 import java.util.List;
 
 import cards.Card;
-import game.Round;
+import combinations.Combination;
+import games.Round;
 
 // Interfaz de jugador
 public interface Player {
+	
 	// Getters
+	List<Combination> getCombinations(); 
+	List<Card> getHand();  
 	int getPoints();
     String getName();
-    List<Card> getHand();  
+    boolean getHasClosed();
     // Setters
     void setHand(List<Card> hand);
     void setPoints(int points);
+    void setCombinations(List<Combination> combinations);
     
     // Lógica del turno
     void playTurn(Round round);  
@@ -25,5 +30,11 @@ public interface Player {
     void discardCard(Card card);  
 
     // Indica si puede cerrar ronda
-    boolean canClose();  
+    boolean canClose();
+    
+    // Metodo para formar una combinación con cartas de la mano
+    void formCombination(List<Card> cards); 
+    
+    // Calcula basados en las combinaciones
+    int calculateScore();  
 }

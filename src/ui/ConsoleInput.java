@@ -13,7 +13,7 @@ public class ConsoleInput {
         this.keyboard = keyboard;
     }
     
-    // Única instancia de ConsoleInput
+    // Única instancia de ConsoleInput, patrón Singleton
     public static ConsoleInput getInstance() {
 		if (instance == null) {
 			instance = new ConsoleInput(new Scanner(System.in));

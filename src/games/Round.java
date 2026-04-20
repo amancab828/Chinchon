@@ -1,9 +1,7 @@
-package game;
+package games;
 
 import java.util.List;
 import cards.Card;
-import cards.Deck;
-import player.Player;
 
 public class Round {
 	private Game game; // Referencia al juego para acceder a jugadores y baraja

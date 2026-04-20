@@ -4,8 +4,18 @@ El proyecto se ha desarrollado siguiendo un enfoque orientado a objetos, con el 
 Se usa una arquitectura modular, en la que las distintas funcionalidades se organizan en diferentes paquetes, clases y métodos. Esta separación permite mejorar la mantenibilidad del código, facilitar su escalabilidad y favorecer una mayor claridad en la estructura general del sistema.
 
 ---
-# Estructura
-La arquitectura del sistema se divide en varios paquetes, cada uno encargado de una responsabilidad específica dentro del dominio del juego. Esta organización modular sigue los principios de separación de responsabilidades y bajo acoplamiento, favoreciendo la mantenibilidad, reutilización y escalabilidad del código.
+# Estructura del Proyecto  
+  
+La arquitectura del sistema se divide en varios paquetes, cada uno encargado de una responsabilidad específica dentro del dominio del juego.  
+Esta organización sigue principios como:  
+  
+- Separación de responsabilidades  
+- Bajo acoplamiento  
+- Alta cohesión  
+  
+Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.  
+  
+### Estructura de directorios
 `src`
 
 `└── app`
@@ -26,15 +36,13 @@ La arquitectura del sistema se divide en varios paquetes, cada uno encargado de 
 
 `└── combinations`
 
-`│   ├── CombinationRule (interface)`
-
 `│   ├── Combination`
 
 `│   └── CombinationType (enum)`
 
 `│`
 
-`└── game`
+`└── games`
 
 `│   ├── Game`
 
@@ -44,7 +52,7 @@ La arquitectura del sistema se divide en varios paquetes, cada uno encargado de 
 
 `│`
 
-`└── player`
+`└── players`
 
 `│   ├── Player (interface)`
 
@@ -75,41 +83,72 @@ La arquitectura del sistema se divide en varios paquetes, cada uno encargado de 
     `└── Menu`
 
 ---
-## Paquete cards
-* Clase Card --> (Carta)
-* Enum Suit --> (Palo)
-* Clase Deck --> (Baraja)
----
-## Paquete combinations
-* Interfaz CombinationRule --> (ReglaCombinacion)
-* Clase Combination implements CombinationRule --> (Combinacion)
-* Enum CombinationType --> (TipoCombinacion)
----
-## Paquete game
-* Clase Game --> (Partida)
-* Clase Round --> (Ronda)
-* Clase Configuration --> (Configuracion)
----
-## Paquete player
-* Interfaz Player (Jugador)
-* Clase AbstractPlayer implements Player --> (JugadorAbstracto)
-* Clase HumanPlayer extends AbstractPlayer --> (JugadorHumano)
-* Clase AIPlayer extends AbstractPlayer --> (JugadorIA)
----
-## Paquete ai
-* Interfaz AIStrategy --> (EstrategiaIA)
-* Clase Strategy implements AIStrategy --> (Estrategia) 
-	-- Se usa como atributo en JugadorIA y es quien decide lo que hace
-
-> Si tengo tiempo se podría añadir o alguna otra: 
->    -  Clase EstrategiaBasica    
->    -  Clase EstrategiaChinchon
 
 ---
-## Paquete ui
-* Clase Colors
-* Clase ConsoleInput
-* Clase Menu
+
+# Descripción de Paquetes
+
+## Paquete `cards`
+Encargado de representar los elementos básicos de la baraja.
+
+- **Clase `Card`** → Representa una carta  
+- **Enum `Suit`** → Representa el palo  
+- **Clase `Deck`** → Representa la baraja  
+
 ---
-## Paquete app
-* Clase Main
+
+## Paquete `combinations`
+Gestiona la lógica de combinaciones de cartas.
+
+- **Interfaz `CombinationRule`** → Define las reglas de combinación  
+- **Clase `Combination`** *(implementa `CombinationRule`)* → Representa una combinación  
+- **Enum `CombinationType`** → Define los tipos de combinación  
+
+---
+
+## Paquete `games`
+Controla la lógica principal del juego.
+
+- **Clase `Game`** → Representa la partida  
+- **Clase `Round`** → Representa una ronda  
+- **Clase `Configuration`** → Gestiona la configuración del juego  
+
+---
+
+## Paquete `players`
+Define los distintos tipos de jugadores.
+
+- **Interfaz `Player`** → Define el comportamiento de un jugador  
+- **Clase `AbstractPlayer`** *(implementa `Player`)* → Base común de jugadores  
+- **Clase `HumanPlayer`** *(hereda de `AbstractPlayer`)* → Jugador humano  
+- **Clase `AIPlayer`** *(hereda de `AbstractPlayer`)* → Jugador controlado por IA  
+
+---
+
+## Paquete `ai`
+Gestiona la lógica de inteligencia artificial.
+
+- **Interfaz `AIStrategy`** → Define estrategias de decisión  
+- **Clase `Strategy`** *(implementa `AIStrategy`)* → Implementación base de estrategia  
+
+ Esta clase se utiliza como atributo en `AIPlayer` y es la encargada de decidir el comportamiento del jugador IA.
+
+>  **Mejoras futuras**
+> - `EstrategiaBasica`  
+> - `EstrategiaChinchon`  
+
+---
+
+## Paquete `ui`
+Encargado de la interacción con el usuario.
+
+- **Clase `Colors`** → Gestión de colores en consola  
+- **Clase `ConsoleInput`** → Entrada de datos  
+- **Clase `Menu`** → Menú del juego  
+
+---
+
+## Paquete `app`
+Punto de entrada de la aplicación.
+
+- **Clase `Main`** → Método principal que inicia el programa  

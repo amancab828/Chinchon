@@ -1,9 +1,9 @@
 package app;
 
+import games.Configuration;
+import games.Game;
 import ui.ConsoleInput;
 import ui.Menu;
-import game.Game;
-import game.Configuration;
 
 public class Main {
 	

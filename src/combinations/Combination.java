@@ -3,7 +3,7 @@ package combinations;
 import java.util.List;
 import cards.Card;
 
-public class Combination implements CombinationRule {
+public class Combination{
 	private List<Card> cards;
 	private CombinationType type;
 	

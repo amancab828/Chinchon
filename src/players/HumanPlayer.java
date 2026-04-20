@@ -1,4 +1,4 @@
-package player;
+package players;
 
 // Jugador humano
 public class HumanPlayer extends AbstractPlayer {

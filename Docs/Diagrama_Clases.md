@@ -22,11 +22,6 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ---
 
 ## Paquete `combinations`
-
-### Interfaz `CombinationRule`
-- Pertenece al paquete `combinations`
-- Ver código
-
 ### Clase `Combination`
 - Pertenece al paquete `combinations`
 - Ver código
@@ -37,38 +32,38 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ---
 
-## Paquete `game`
+## Paquete `games`
 
 ### Clase `Game`
-- Pertenece al paquete `game`
+- Pertenece al paquete `games`
 - Ver código
 
 ### Clase `Round`
-- Pertenece al paquete `game`
+- Pertenece al paquete `games`
 - Ver código
 
 ### Clase `Configuration`
-- Pertenece al paquete `game`
+- Pertenece al paquete `games`
 - Ver código
 
 ---
 
-## Paquete `player`
+## Paquete `players`
 
 ### Interfaz `Player`
-- Pertenece al paquete `player`
+- Pertenece al paquete `players`
 - Ver código
 
 ### Clase `AbstractPlayer`
-- Pertenece al paquete `player`
+- Pertenece al paquete `players`
 - Ver código
 
 ### Clase `HumanPlayer`
-- Pertenece al paquete `player`
+- Pertenece al paquete `players`
 - Ver código
 
 ### Clase `AIPlayer`
-- Pertenece al paquete `player`
+- Pertenece al paquete `players`
 - Ver código
 
 ---
@@ -98,6 +93,7 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ### Clase `ConsoleInput`
 - Pertenece al paquete `ui`
+- Aquí se usa el patrón Singleton, para garantizar que la clase tenga una única instancia y proporcionar acceso global
 - Ver código
 
 ### Clase `Menu`
