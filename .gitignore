@@ -1,12 +1,6 @@
 # 🔹 Obsidian
 .obsidian/
 
-# 🔹 Eclipse
-.metadata/
-.classpath
-.project
-.settings/
-
 # 🔹 Archivos compilados de Java
 *.class
 
