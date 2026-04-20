@@ -44,7 +44,8 @@ public class Game {
 	
 	// Lógica para jugar una ronda
 	private void playRound() {
-		Round round = new Round(players, new Deck());
+		// Revisar este this
+		Round round = new Round(this);
 		round.start();
 		numberRounds++;
 	}

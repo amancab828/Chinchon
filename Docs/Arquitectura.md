@@ -7,37 +7,71 @@ Se usa una arquitectura modular, en la que las distintas funcionalidades se orga
 # Estructura
 La arquitectura del sistema se divide en varios paquetes, cada uno encargado de una responsabilidad específica dentro del dominio del juego. Esta organización modular sigue los principios de separación de responsabilidades y bajo acoplamiento, favoreciendo la mantenibilidad, reutilización y escalabilidad del código.
 `src`
+
 `└── app`
+
 `│   └── Main`
+
 `│`
+
 `└── cards`
+
 `│   ├── Card`
+
 `│   ├── Suit (enum)`
+
 `│   └── Deck`
+
 `│`
+
 `└── combinations`
+
 `│   ├── CombinationRule (interface)`
+
 `│   ├── Combination`
+
 `│   └── CombinationType (enum)`
+
 `│`
+
 `└── game`
+
 `│   ├── Game`
+
 `│   └── Round`
+
+`│   └── Configuration`
+
 `│`
+
 `└── player`
+
 `│   ├── Player (interface)`
+
 `│   ├── AbstractPlayer`
+
 `│   │   ├── HumanPlayer`
+
 `│   │   └── AIPlayer`
+
 `│`
+
 `└── ai`
+
 `│   ├── AIStrategy (interface)`
+
 `│   └── Strategy`
+
 `│   ├── (posible) EstrategiaBasica`
+
 `│   └── (posible) EstrategiaChinchon`
+
 `│`
+
 `└── ui`
+
     `├── ConsoleInput`
+    
     `└── Menu`
 
 ---
@@ -54,6 +88,7 @@ La arquitectura del sistema se divide en varios paquetes, cada uno encargado de 
 ## Paquete game
 * Clase Game --> (Partida)
 * Clase Round --> (Ronda)
+* Clase Configuration --> (Configuracion)
 ---
 ## Paquete player
 * Interfaz Player (Jugador)

@@ -1,12 +1,12 @@
 
-==Preguntar lo de imprimir línea del consolInput==
-==Solo metemos los métodos que usamos o todos ==
+El consoleInput esta perfecto, puedo añadir los métodos que no usamos, y como librería
+Dos patrones de entornos de desarrollo
 
 ---
 # Baraja española
 
 * 1 baraja --> 40 cartas
-==Es configurable antes de empezar una partida de elegir entre 1 o 2 barajas --> ?????????==
+Si es configurable entre 1 y 2, cuando se termina la baraja, se vuelve a barajar
 * Palos: oros, copas, espadas y bastos
 * Valores: 1-7, 10, 11, 12
 --- 
@@ -16,17 +16,15 @@
 	- Humanos
 	- Máquina (IA)
 * Se configura al empezar una partida, cuantas IA hay y cuantos jugadores reales
-==Es decir, que si queremos podemos poner una partida de 4 IA y un humano, no????????==
 ---
 # Partida
 * Al principio de la partida se define cuantas rondas son en total, y cual es el límite de puntos máximo para eliminar a un jugador
-==Tanto el numero de rondas como el limite de puntos son configurables al principio de la partida, no?????==
-==O solo el número de rondas?==
+==Ronda, hasta que se eliminan todos los jugadores==
 * La ronda termina cuando: 
 	* Se termina la/las barajas
 	* Un jugador se planta
 * La partida termina cuando: 
-	* Un jugador hace Chinchón ==(o esto solo termina la ronda????????????)==
+	* Un jugador hace Chinchón 
 	* Se termina el número de rondas establecidos
 	* Solo queda un jugador porque el resto se han pasado de puntos
 ---
@@ -39,7 +37,8 @@ Mínimo 3 cartas del mismo número
 Mínimo 3 cartas consecutivas del mismo palo
 `Ejemplo: 5🍷 6🍷 7🍷`
 
-* **<u>Chinchón</u>**
+* **<u>Chinchón</u>
+NO PUEDES CERRAR EN EL PRIMER TURNO
 7 cartas consecutivas del mismo palo
 `Ejemplo: 4🪙 – 5🪙 – 6🪙 – 7🪙 – 10🪙 – 11🪙 – 12🪙`
 

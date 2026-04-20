@@ -43,6 +43,7 @@ public class Configuration {
         return numberHuman;
     }
     
+    // Creo que es mejor preguntar es IA o no, y luego el nombre
     private List<Player> createPlayers(int total, int humans) {
         List<Player> players = new ArrayList<>();
         int ai = total - humans;
