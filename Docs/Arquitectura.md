@@ -56,6 +56,8 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
 
 `│   ├── Player (interface)`
 
+`│   ├── PlayerFactory`
+
 `│   ├── AbstractPlayer`
 
 `│   │   ├── HumanPlayer`
@@ -120,6 +122,7 @@ Define los distintos tipos de jugadores.
 
 - **Interfaz `Player`** → Define el comportamiento de un jugador  
 - **Clase `AbstractPlayer`** *(implementa `Player`)* → Base común de jugadores  
+- Clase `PlayerFactory` → Se implementa el Patrón Factory
 - **Clase `HumanPlayer`** *(hereda de `AbstractPlayer`)* → Jugador humano  
 - **Clase `AIPlayer`** *(hereda de `AbstractPlayer`)* → Jugador controlado por IA  
 

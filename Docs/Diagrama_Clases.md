@@ -13,6 +13,8 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ### Enum `Suit`
 - Pertenece al paquete `cards`
+- Este enum, contiene los 4 palos y un atributo que contiene el símbolo (🌿,🍷,⚔️, 🟡)
+- FALTA METER LOS COLORES PARA LA CARTA
 - Ver código
 
 ### Clase `Deck`
@@ -64,6 +66,11 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ### Clase `AIPlayer`
 - Pertenece al paquete `players`
+- Ver código
+
+### Clase PlayerFactory
+- Pertenece al paquete `players`
+- Se usa el patrón Factory
 - Ver código
 
 ---

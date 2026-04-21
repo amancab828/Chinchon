@@ -10,11 +10,10 @@ public class Game {
 	private int maxRounds; // Número máximo de rondas
 	private int numberRounds; // Número de rondas jugadas
 	
-	public Game(List<Player> players, int maxPoints, int numberDecks, int maxRounds) {
+	public Game(List<Player> players, int maxPoints, int numberDecks) {
 		this.players = players;
 		this.maxPoints = maxPoints;
 		this.numberDecks = numberDecks;
-		this.maxRounds = maxRounds;
 		this.numberRounds = 0;
 	}
 	

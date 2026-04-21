@@ -1,19 +1,26 @@
 package cards;
 
+import ui.Colors;
+
 public enum Suit {
-    CLUBS("🌿"),      // Bastos --> Uso el verde
-    CUPS("🍷"),       // Copas --> Uso el rojo
-    SWORDS("⚔️"),     // Espadas --> Uso el azul/gris
-    COINS("🟡");       // Oros --> Uso el amarillo/dorado
+    CLUBS("🌿", Colors.GREEN),      // Bastos --> Uso el verde
+    CUPS("🍷", Colors.RED),         // Copas --> Uso el rojo
+    SWORDS("⚔️", Colors.BLUE),      // Espadas --> Uso el azul/gris
+    COINS("🟡", Colors.YELLOW);     // Oros --> Uso el amarillo/dorado
     
     private final String symbol;
+    private final String color;
 
     // Constructor del enum
-    Suit(String symbol) {
+    Suit(String symbol, String color) {
         this.symbol = symbol;
+        this.color = color;
     }
 
-    public String getSimbolo() {
+    public String getSymbol() {
         return symbol;
     }
+    public String getColor() {
+		return color;
+	}
 }

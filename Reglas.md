@@ -1,7 +1,4 @@
 
-El consoleInput esta perfecto, puedo añadir los métodos que no usamos, y como librería
-Dos patrones de entornos de desarrollo
-
 ---
 # Baraja española
 
@@ -19,13 +16,10 @@ Si es configurable entre 1 y 2, cuando se termina la baraja, se vuelve a barajar
 ---
 # Partida
 * Al principio de la partida se define cuantas rondas son en total, y cual es el límite de puntos máximo para eliminar a un jugador
-==Ronda, hasta que se eliminan todos los jugadores==
 * La ronda termina cuando: 
-	* Se termina la/las barajas
 	* Un jugador se planta
 * La partida termina cuando: 
 	* Un jugador hace Chinchón 
-	* Se termina el número de rondas establecidos
 	* Solo queda un jugador porque el resto se han pasado de puntos
 ---
 # Combinaciones válidas

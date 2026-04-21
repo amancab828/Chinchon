@@ -7,6 +7,7 @@ import ai.Strategy;
 import players.AIPlayer;
 import players.HumanPlayer;
 import players.Player;
+import players.PlayerFactory;
 import ui.ConsoleInput;
 
 public class Configuration {
@@ -18,14 +19,14 @@ public class Configuration {
     
 	public Game config() {
         int totalPlayers = askNumberOfPlayers();
-        int humansPlayers = askNumberOfHumans(totalPlayers);
-        List<Player> players = createPlayers(totalPlayers, humansPlayers);
+        List<Player> players = createPlayers(totalPlayers);
 
         int maxPoints = askMaxPoints();
         int numberOfDecks = askNumberOfDecks();
-        int maxRounds = askMaxRounds();
+        //int maxRounds = askMaxRounds();
         
-        return new Game(players, maxPoints, numberOfDecks, maxRounds);
+        //return new Game(players, maxPoints, numberOfDecks, maxRounds);
+        return new Game(players, maxPoints, numberOfDecks);
 	}
 	
     // ---------- MÉTODOS PRIVADOS ----------
@@ -35,32 +36,26 @@ public class Configuration {
         return console.readIntInRange(2, 5);
     }
 
-    private int askNumberOfHumans(int totalPlayers) {
-        int numberHuman;
-        console.escribirLinea(String.format("Número de jugadores humanos (0-%d): ", totalPlayers));
-        numberHuman = console.readIntInRange(0, totalPlayers);
-        console.escribirLinea(String.format("Números de IA: %d", totalPlayers - numberHuman));
-        return numberHuman;
-    }
-    
-    // Creo que es mejor preguntar es IA o no, y luego el nombre
-    private List<Player> createPlayers(int total, int humans) {
-        List<Player> players = new ArrayList<>();
-        int ai = total - humans;
-
-        // HUMANOS
-        for (int i = 0; i < humans; i++) {
-            console.escribirLinea(String.format("Nombre del jugador %d: ", i + 1));
-            String name = console.readString();
-            players.add(new HumanPlayer(name));
-        }
-
-        // IA
-        for (int i = 0; i < ai; i++) {
-            players.add(new AIPlayer("IA_" + (i + 1), new Strategy()));
-        }
-
-        return players;
+	// Aquí se usa el patron Factory para crear los jugadores, preguntando si son humanos o IA
+	// Configuration no sabe en ningún momento qué tipo de jugador se está creando, solo delega esa responsabilidad al PlayerFactory
+    private List<Player> createPlayers(int total){
+    	List<Player> players = new ArrayList<>();
+    	PlayerFactory playerFactory = new PlayerFactory();
+    	
+    	for (int i = 0; i < total; i++) {
+			console.escribirLinea(String.format("¿El jugador %d es humano? (s/n): ", i + 1));
+			boolean playerType = console.readBooleanUsingChar('s', 'n');
+			
+			if (playerType) {
+				console.escribirLinea(String.format("Nombre del jugador %d: ", i + 1));
+				String name = console.readString();
+				players.add(playerFactory.createPlayer(name, true));
+			} else {
+				players.add(playerFactory.createPlayer(String.format("%d", i+1), false));
+			}
+    	}
+    	
+    	return players;
     }
     
     private int askMaxPoints() {
@@ -73,8 +68,8 @@ public class Configuration {
         return console.readIntInRange(1, 2);
     }
 
-    private int askMaxRounds() {
+    /*private int askMaxRounds() {
         console.escribirLinea("Rondas máximas (e.g. 10):");
         return console.readInt();
-    }
+    }*/
 }
