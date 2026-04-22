@@ -17,7 +17,7 @@ Si es configurable entre 1 y 2, cuando se termina la baraja, se vuelve a barajar
 # Partida
 * Al principio de la partida se define cuantas rondas son en total, y cual es el límite de puntos máximo para eliminar a un jugador
 * La ronda termina cuando: 
-	* Un jugador se planta
+	* Un jugador se planta, para cerrar debe tener de 6 a 7 cartas combinadas
 * La partida termina cuando: 
 	* Un jugador hace Chinchón 
 	* Solo queda un jugador porque el resto se han pasado de puntos
@@ -54,4 +54,5 @@ NO PUEDES CERRAR EN EL PRIMER TURNO
 	* Tiene de 6 a 7 cartas combinadas. 
 		El jugador que cierre con 7 cartas combinadas, se le restan 10 puntos. 
 		En el caso de que sean 6 cartas combinadas, la carta suelta tiene que valer entre 1 y 5
+	    No puede cerrar si se pasa del límite de puntos
 	* Cuando un jugador cierra, es después de robar y antes de descartar, es decir, al cerrar ya se está descartando.
