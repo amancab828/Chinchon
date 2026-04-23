@@ -3,9 +3,6 @@ package games;
 import java.util.ArrayList;
 import java.util.List;
 
-import ai.Strategy;
-import players.AIPlayer;
-import players.HumanPlayer;
 import players.Player;
 import players.PlayerFactory;
 import ui.ConsoleInput;
@@ -59,7 +56,8 @@ public class Configuration {
     }
     
     private int askMaxPoints() {
-        console.escribirLinea("Puntos máximos para perder (e.g. 100):");
+        // probar con 0, a ver que pasa
+        console.escribirLinea("Puntos máximos para perder:");
         return console.readInt();
     }
 

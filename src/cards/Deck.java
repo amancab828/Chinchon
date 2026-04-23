@@ -38,6 +38,12 @@ public class Deck {
     public void discard(Card card) {
         discardPile.add(card);
     }
+    
+    // Ver la carta superior del descarte boca arriba sin robarla
+    // No puede estar vacía, porque al iniciar la ronda se descarta una carta
+    public Card peekDiscardPile() {
+		return discardPile.get(discardPile.size() - 1);
+	}
 	
 	// Robar una carta del montón
 	public Card drawCard() {

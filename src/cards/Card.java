@@ -33,6 +33,7 @@ public class Card {
 		return cardLines;
 	}
 	
+	// Salida simple
 	@Override
 	public String toString() {
 		return String.format("%d%s", value, suit.getSymbol());

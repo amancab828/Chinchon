@@ -14,11 +14,14 @@ public interface Player {
 	List<Card> getHand();  
 	int getPoints();
     String getName();
-    boolean getHasClosed();
+    boolean isActive();
     // Setters
     void setHand(List<Card> hand);
     void setPoints(int points);
     void setCombinations(List<Combination> combinations);
+    
+    // Ver mano
+    String seeHand();
     
     // Lógica del turno
     void playTurn(Round round);  
@@ -28,13 +31,5 @@ public interface Player {
     
     // Eliminar carta de la mano
     void discardCard(Card card);  
-
-    // Indica si puede cerrar ronda
-    boolean canClose();
     
-    // Metodo para formar una combinación con cartas de la mano
-    void formCombination(List<Card> cards); 
-    
-    // Calcula basados en las combinaciones
-    int calculateScore();  
 }
