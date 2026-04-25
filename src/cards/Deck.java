@@ -41,7 +41,7 @@ public class Deck {
     
     // Ver la carta superior del descarte boca arriba sin robarla
     // No puede estar vacía, porque al iniciar la ronda se descarta una carta
-    public Card peekDiscardPile() {
+    public Card seeDiscardPile() {
 		return discardPile.get(discardPile.size() - 1);
 	}
 	

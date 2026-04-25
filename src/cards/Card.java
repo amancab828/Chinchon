@@ -23,15 +23,29 @@ public class Card {
 	// Cuando el jugador decida ver su mano completa
 	public String[] seeCard() {
 		String color = suit.getColor();
-		String[] cardLines = new String[4];
+		String[] cardLines = new String[5];
 		
-		cardLines[0] = color + "┌────┐" + Colors.RESET;
-		cardLines[1] = color + String.format("│%-2d%s│", value, suit.getSymbol()) + Colors.RESET;
-		cardLines[2] = color + "│    │" + Colors.RESET;
-		cardLines[3] = color + "└────┘" + Colors.RESET;
+		cardLines[0] = String.format("%s┌────┐%s", color, Colors.RESET);
+		cardLines[1] = String.format("%s│%-2d %s│%s", color, value, suit.getLetter(), Colors.RESET);
+		cardLines[2] = String.format("%s│    │%s", color, Colors.RESET);
+		cardLines[3] = String.format("%s└────┘%s", color, Colors.RESET);
+		cardLines[4] = String.format("%s %s   %s", color, suit.getSymbol(), Colors.RESET); 
 		
 		return cardLines;
 	}
+	
+	public String[] seeHiddenCard() {
+		String[] cardLines = new String[5];
+		
+		cardLines[0] = "┌────┐";
+		cardLines[1] = "│░░░░│";
+		cardLines[2] = "│░░░░│";
+		cardLines[3] = "└────┘"; 
+		cardLines[4] = "   ░   ";
+		
+		return cardLines;
+	}
+	
 	
 	// Salida simple
 	@Override

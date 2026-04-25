@@ -23,10 +23,10 @@ public class Main {
     		switch (option) {
     			case 1 -> {
     				Game game = configuration.config();
-    				console.escribir("¡Comenzando el juego!");
+    				console.escribirLinea("¡Comenzando el juego!");
     				Optional<Player> winner = game.startGame();
     				if (winner.isPresent()) {
-    					console.escribirLinea("Ganador es tal");
+    					console.escribirLinea("Ganador: " + winner.get().getName());
     				} else {
     					console.escribirLinea("No se ha determinado ganador");
     				}

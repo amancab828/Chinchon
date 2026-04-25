@@ -56,3 +56,4 @@ NO PUEDES CERRAR EN EL PRIMER TURNO
 		En el caso de que sean 6 cartas combinadas, la carta suelta tiene que valer entre 1 y 5
 	    No puede cerrar si se pasa del límite de puntos
 	* Cuando un jugador cierra, es después de robar y antes de descartar, es decir, al cerrar ya se está descartando.
+	* Si otro jugador ha cerrado y solo tiene 4 cartas combinadas, el resto de cartas suman su valor

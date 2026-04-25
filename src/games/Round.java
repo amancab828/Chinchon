@@ -1,7 +1,10 @@
 package games;
 
 import java.util.List;
+
+import cards.Card;
 import cards.Deck;
+import combinations.Combination;
 import combinations.CombinationFactory;
 import players.Player;
 import ui.ConsoleInput;
@@ -16,6 +19,7 @@ public class Round {
 	public Round(Game game) {
 		this.game = game;
 		deck = new Deck(game.getNumberDecks());
+		players = game.getPlayers();
 		activePlayers = game.getActivePlayers();
 		roundOver = false;
 	}
@@ -39,10 +43,21 @@ public class Round {
 	    deck.discard(deck.drawCard());
 	}
 	
+	private void showCardstoDraw() {
+		StringBuilder sb = new StringBuilder();
+		Card card = deck.seeDiscardPile();
+	    for (int row = 0; row < 5; row++) {
+	        sb.append(String.format("%s  %s", card.seeHiddenCard()[row], card.seeCard()[row]));
+	        sb.append("\n");
+	    }
+	    ConsoleInput.getInstance().escribirLinea(sb.toString());
+	}
+	
 	// Turno de cada jugador
 	private void nextTurn() {
 		for (Player p : activePlayers) {
 			if (!roundOver && p.isActive()) {
+				showCardstoDraw();
 				p.playTurn(this);
 			}
 		}
@@ -53,14 +68,18 @@ public class Round {
 		return roundOver || game.getChinchonWinner().isPresent();
 	}
 	
-	// Antes de este método hacer CombinationFactory
 	private void scoreRound() {
 		CombinationFactory factory = new CombinationFactory();
 		ConsoleInput console = ConsoleInput.getInstance();
+		List<Card> hand;
+		List<Combination> combinations;
+		int points;
 		
 		console.escribirLinea("\nFIN DE LA RONDA: PUNTUACIÓN");
 		for (Player p : players) {
-			// Mostrar puntos de cada uno
+			hand = p.getHand();
+			combinations = factory.getBestCombinations(hand);
+			points = factory.calculatePoints(hand, combinations);
 		}
 	}
 	

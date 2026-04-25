@@ -16,44 +16,53 @@ public class HumanPlayer extends AbstractPlayer {
 
 	// TURNO DE ROBAR
 	private Card turnDraw(Deck deck) {
-		// Ver carta oculta, hacemos el dibujo aqui mismo
-			  /*┌────┐
-				|░░░░|
-				|░░░░|
-				└────┘*/
-		// Y en el otro lado la carta visible, metodo de deck
+		Card drawCard = null;
+		int option;
+		console.escribirLinea("Tus cartas:");
+		console.escribirLinea(seeHand());
 		console.escribirLinea("¿De dónde quieres robar? 1) Mazo  2) Descarte");
+		option = console.readIntInRange(1, 2);
+		switch (option) {
+			case 1 -> drawCard = deck.drawCard();
+			case 2 -> drawCard = deck.drawDiscardPile();
+			default -> console.escribir("Opción no válida.");
+		}
 		
-		
-		console.escribirLinea("Has robado: tal");
-		return deck.drawCard();
+		console.escribirLinea(String.format("Has robado: %s", drawCard.toString()));
+		return drawCard;
 	}
 	
 	// TURNO DE DESCARTAR
 	private void turnDiscard(Deck deck) {
-		// 1-2-3-4-5-6-7-8
+		int drawOption;
+		Card discardCard = null;
+
 		console.escribirLinea("Tu mano (8 cartas):");
 		console.escribirLinea(seeHand());
-		//elegi una carta a robar
-		int drawOption = console.readIntInRange(1, 8);
+		console.escribir("Elige carta a descartar (1-8): ");
+		
+		drawOption = console.readIntInRange(1, 8);
+		discardCard = hand.get(drawOption - 1);
+
+		// Añadir la carta al descarte
+		deck.discard(discardCard);
+		// Eliminar la carta de la mano
+		discardCard(discardCard);
+		
+		console.escribirLinea(String.format("Has descartado: %s", discardCard.toString()));
 	}
 	
 	// PREGUNTAMOS SI SE PLANTA
 	private boolean turnStand() {
-		boolean stand = true;
-		// Preguntar al usuario
-		console.readBooleanUsingChar('s', 'n');
-		// PUES LO MISMO NO PUEDES EH 
-		
-		return stand;
+		console.escribir("¿Quieres plantarte/cerrar la ronda? (s/n): ");
+		// Calcular puntos de la mano y ver si puede plantarse
+		return console.readBooleanUsingChar('s', 'n');
 	}
 	
 	// Lógica del turno del jugador humano
-	// Es necesario usar el ConsoleInput
 	@Override
 	public void playTurn(Round round) {
-		console.escribirLinea(seeHand());
-		turnDraw(round.getDeck());
+		receiveCard(turnDraw(round.getDeck()));
 		turnDiscard(round.getDeck());
 		if (turnStand()) {
 			round.setRoundOver();

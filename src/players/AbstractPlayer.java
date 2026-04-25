@@ -65,11 +65,16 @@ public abstract class AbstractPlayer implements Player {
 	public String seeHand() {
 		StringBuilder sb = new StringBuilder();
 
-		// Añadir aqui lo de 1, 2, 3, 4, 5, 6, 7 y 8 para que el jugador sepa que carta es cada una 
-		// Puede que el 8 no siempre, porque descarta una carta
-	    for (int row = 0; row < 4; row++) {
+		// Los número arriba de las cartas
+		for (int i = 0; i < hand.size(); i++) {
+			sb.append(String.format(" %d.     ", i+1));
+		}
+		sb.append("\n");
+		
+		// Las cartas una tras otra
+	    for (int row = 0; row < 5; row++) {
 	        for (Card card : hand) {
-	            sb.append(card.seeCard()[row]).append(" ");
+	        	sb.append(String.format("%s  ", card.seeCard()[row]));
 	        }
 	        sb.append("\n");
 	    }
