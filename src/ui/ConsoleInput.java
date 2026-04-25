@@ -43,6 +43,11 @@ public class ConsoleInput {
     public void escribirRojo(String texto) {
         System.out.printf("%s%s%s", RED, texto, RESET);
     }
+    public void escribirCuadrado(String texto) {
+    	System.out.printf("\n\n\n%s%s==============\n", WHITE, BLACK_BACKGROUND);
+        System.out.printf("%s\n", texto );
+        System.out.printf("==============%s\n", RESET);
+    }
     
 	// Retorna un int introducido por el usuario
 	public int readInt() {

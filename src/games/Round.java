@@ -1,5 +1,6 @@
 package games;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cards.Card;
@@ -15,7 +16,9 @@ public class Round {
 	private List<Player> activePlayers; 
 	private List<Player> players; //Para mostrar la puntuación de todos, aunque esten eliminados
 	private boolean roundOver; //Los jugadores deben hacer un setter a este para plantarse
-
+	private CombinationFactory factory = new CombinationFactory();
+	private ConsoleInput console = ConsoleInput.getInstance();
+	
 	public Round(Game game) {
 		this.game = game;
 		deck = new Deck(game.getNumberDecks());
@@ -57,6 +60,7 @@ public class Round {
 	private void nextTurn() {
 		for (Player p : activePlayers) {
 			if (!roundOver && p.isActive()) {
+				console.escribirCuadrado(String.format("TURNO DE: %s", p.getName()));
 				showCardstoDraw();
 				p.playTurn(this);
 			}
@@ -69,8 +73,6 @@ public class Round {
 	}
 	
 	private void scoreRound() {
-		CombinationFactory factory = new CombinationFactory();
-		ConsoleInput console = ConsoleInput.getInstance();
 		List<Card> hand;
 		List<Combination> combinations;
 		int points;
@@ -80,6 +82,10 @@ public class Round {
 			hand = p.getHand();
 			combinations = factory.getBestCombinations(hand);
 			points = factory.calculatePoints(hand, combinations);
+			p.setPoints(p.getPoints()+points);
+			console.escribirLinea(String.format("%s: Puntos de esta ronda: %d Puntos totales: %d", p.getName(), points, p.getPoints()));
+			p.setHand(new ArrayList<>());
+			p.setTurn(1);
 		}
 	}
 	

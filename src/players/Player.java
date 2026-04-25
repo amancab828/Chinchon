@@ -13,11 +13,13 @@ public interface Player {
 	List<Combination> getCombinations(); 
 	List<Card> getHand();  
 	int getPoints();
+	int getTurn();
     String getName();
     boolean isActive();
     // Setters
     void setHand(List<Card> hand);
     void setPoints(int points);
+    void setTurn(int turn);
     void setCombinations(List<Combination> combinations);
     
     // Ver mano

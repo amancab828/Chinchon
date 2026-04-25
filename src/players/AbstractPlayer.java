@@ -14,11 +14,13 @@ public abstract class AbstractPlayer implements Player {
 	protected List<Combination> combinations;
 	protected int points;
 	protected boolean active; 
+	protected int turn;
 	
 	// Constructor padre
 	public AbstractPlayer(String name) {
 		this.name = name;
 		points = 0;
+		turn = 1;
 		hand = new ArrayList<>();
 		combinations = new ArrayList<>();
 		active = true;
@@ -28,6 +30,10 @@ public abstract class AbstractPlayer implements Player {
 	@Override
 	public String getName() {
 		return name;
+	}
+	@Override
+	public int getTurn() {
+		return turn;
 	}
 	@Override
     public List<Card> getHand(){
@@ -54,6 +60,10 @@ public abstract class AbstractPlayer implements Player {
 	@Override
 	public void setPoints(int points) {
 		this.points = points;
+	};
+	@Override
+	public void setTurn(int turn) {
+		this.turn = turn;
 	};
 	@Override
 	public void setCombinations(List<Combination> combinations) {

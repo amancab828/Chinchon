@@ -1,7 +1,11 @@
 package players;
 
+import java.util.List;
+
 import cards.Card;
 import cards.Deck;
+import combinations.Combination;
+import combinations.CombinationFactory;
 import games.Round;
 import ui.ConsoleInput;
 
@@ -18,7 +22,7 @@ public class HumanPlayer extends AbstractPlayer {
 	private Card turnDraw(Deck deck) {
 		Card drawCard = null;
 		int option;
-		console.escribirLinea("Tus cartas:");
+		console.escribirLinea(String.format("==== Mano de %s ====", name));
 		console.escribirLinea(seeHand());
 		console.escribirLinea("¿De dónde quieres robar? 1) Mazo  2) Descarte");
 		option = console.readIntInRange(1, 2);
@@ -54,9 +58,28 @@ public class HumanPlayer extends AbstractPlayer {
 	
 	// PREGUNTAMOS SI SE PLANTA
 	private boolean turnStand() {
+		CombinationFactory factory = new CombinationFactory();
+		List<Combination> combinations;
+		boolean stand;
 		console.escribir("¿Quieres plantarte/cerrar la ronda? (s/n): ");
 		// Calcular puntos de la mano y ver si puede plantarse
-		return console.readBooleanUsingChar('s', 'n');
+		stand = console.readBooleanUsingChar('s', 'n');
+		
+		if (stand) {
+			combinations = factory.getBestCombinations(hand);
+			if (factory.calculatePoints(hand, combinations) > 5) {
+				console.escribirLinea("Tienes que puntuar 5 puntos o menos para poder plantarte");
+				stand = false;
+			}
+			if (getTurn() == 1) {
+				console.escribirLinea("No te puede plantar en el primer turno");
+				stand = false;
+			}
+		}
+		
+		setTurn(getTurn()+1);
+		
+		return stand;
 	}
 	
 	// Lógica del turno del jugador humano

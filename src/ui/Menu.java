@@ -8,7 +8,7 @@ public class Menu {
 	}
 	
 	public void showMenu() {
-		console.escribirLinea("==== CHINCHON ====");
+		console.escribirCuadrado(" = CHINCHON = ");
         console.escribirLinea("1. Jugar");
         console.escribirLinea("2. Reglas");
         console.escribirLinea("3. Salir");
