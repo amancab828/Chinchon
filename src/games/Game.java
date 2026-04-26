@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import players.Player;
 
+/**
+ * Clase principal que representa la partida del juego Chinchón.
+ * Controla el flujo general del juego, las rondas, los jugadores
+ * y determina el final de la partida.
+ *
+ * Se encarga de gestionar la lógica global del juego sin entrar
+ * en detalles internos de cada ronda o jugador.
+ */
 public class Game {
 	private List<Player> players; // Lista de jugadores
 	private int maxPoints; // Puntos máximos para perder
@@ -11,6 +19,13 @@ public class Game {
 	/*private int maxRounds; // Número máximo de rondas*/
 	private Optional<Player> chinchonWinner; // Ganador del juego
 	
+    /**
+     * Constructor: Crea una nueva partida con los parámetros de configuración indicados.
+     *
+     * @param players lista de jugadores que participarán en la partida
+     * @param maxPoints puntos máximos permitidos antes de quedar eliminado
+     * @param numberDecks número de barajas utilizadas en el juego
+     */
 	public Game(List<Player> players, int maxPoints, int numberDecks) {
 		this.players = players;
 		this.maxPoints = maxPoints;
@@ -55,13 +70,22 @@ public class Game {
 		return gameFinished;
 	}
 	
-	// Lógica para jugar una ronda
+    /**
+     * Ejecuta una ronda completa del juego.
+     * Crea una instancia de Round y la inicia.
+     */
 	private void playRound() {
 		Round round = new Round(this);
 		round.start();
 	}
 	
-	// Lógica para determinar el ganador al finalizar el juego
+    /**
+     * Determina el ganador final de la partida.
+     * Prioriza el ganador por chinchón si existe,
+     * si no, el último jugador en pie.
+     *
+     * @return jugador ganador envuelto en Optional
+     */
 	private Optional<Player> determineWinner() {
 		Optional<Player> winner = Optional.empty();
 		List<Player> activePlayers = getActivePlayers();
@@ -75,7 +99,12 @@ public class Game {
 		return winner;
 	}
 	
-	// Lógica del juego
+    /**
+     * Inicia la partida completa del juego.
+     * Gestiona el ciclo de rondas hasta que se cumple la condición de fin.
+     *
+     * @return jugador ganador de la partida, si existe
+     */
 	public Optional<Player> startGame() {
 		while (!isGameOver()) {
 			playRound();

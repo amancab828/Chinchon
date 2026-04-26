@@ -7,13 +7,30 @@ import players.Player;
 import players.PlayerFactory;
 import ui.ConsoleInput;
 
+/**
+ * Clase encargada de configurar una partida del juego.
+ * Solicita los parámetros necesarios al usuario (jugadores, puntos máximos, barajas, etc.)
+ * y construye el objeto Game listo para ser ejecutado.
+ *
+ * Esta clase no contiene lógica del juego, únicamente configuración inicial.
+ */
 public class Configuration {
     private ConsoleInput console;
     
+    /**
+     * Inicializa la configuración del juego.
+     * Obtiene la instancia única de entrada por consola.
+     */
     public Configuration() {
 		this.console = ConsoleInput.getInstance();
 	}
     
+    /**
+     * Configura todos los parámetros necesarios para iniciar una partida.
+     * Solicita datos al usuario y crea los jugadores y la partida.
+     *
+     * @return objeto Game completamente configurado
+     */
 	public Game config() {
         int totalPlayers = askNumberOfPlayers();
         List<Player> players = createPlayers(totalPlayers);
@@ -26,25 +43,34 @@ public class Configuration {
         return new Game(players, maxPoints, numberOfDecks);
 	}
 	
-    // ---------- MÉTODOS PRIVADOS ----------
-
+    /**
+     * Solicita al usuario el número de jugadores (entre 2 y 5).
+     *
+     * @return número de jugadores introducido
+     */
     private int askNumberOfPlayers() {
-        console.escribirLinea("Número de jugadores (2-5):");
+        console.writeLine("Número de jugadores (2-5):");
         return console.readIntInRange(2, 5);
     }
 
-	// Aquí se usa el patron Factory para crear los jugadores, preguntando si son humanos o IA
-	// Configuration no sabe en ningún momento qué tipo de jugador se está creando, solo delega esa responsabilidad al PlayerFactory
+    /**
+     * Crea la lista de jugadores para la partida.
+     * Utiliza el patrón Factory para instanciar jugadores humanos o IA
+     * sin que esta clase conozca sus implementaciones concretas.
+     *
+     * @param total número total de jugadores a crear
+     * @return lista de jugadores configurados
+     */
     private List<Player> createPlayers(int total){
     	List<Player> players = new ArrayList<>();
     	PlayerFactory playerFactory = new PlayerFactory();
     	
     	for (int i = 0; i < total; i++) {
-			console.escribirLinea(String.format("¿El jugador %d es humano? (s/n): ", i + 1));
+			console.writeLine(String.format("¿El jugador %d es humano? (s/n): ", i + 1));
 			boolean playerType = console.readBooleanUsingChar('s', 'n');
 			
 			if (playerType) {
-				console.escribirLinea(String.format("Nombre del jugador %d: ", i + 1));
+				console.writeLine(String.format("Nombre del jugador %d: ", i + 1));
 				String name = console.readString();
 				players.add(playerFactory.createPlayer(name, true));
 			} else {
@@ -55,14 +81,23 @@ public class Configuration {
     	return players;
     }
     
+    /**
+     * Solicita los puntos máximos de la partida.
+     *
+     * @return puntuación máxima permitida antes de perder
+     */
     private int askMaxPoints() {
-        // probar con 0, a ver que pasa
-        console.escribirLinea("Puntos máximos para perder:");
+        console.writeLine("Puntos máximos para perder:");
         return console.readInt();
     }
 
+    /**
+     * Solicita el número de barajas que se usarán en la partida.
+     *
+     * @return número de barajas (1 o 2)
+     */
     private int askNumberOfDecks() {
-        console.escribirLinea("Número de barajas (1-2):");
+        console.writeLine("Número de barajas (1-2):");
         return console.readIntInRange(1, 2);
     }
 

@@ -38,6 +38,8 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
 
 `│   ├── Combination`
 
+`│   ├── CombinationFactory`
+
 `│   └── CombinationType (enum)`
 
 `│`
@@ -72,9 +74,7 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
 
 `│   └── Strategy`
 
-`│   ├── (posible) EstrategiaBasica`
-
-`│   └── (posible) EstrategiaChinchon`
+`│   └── (Posible) HardStrategy`
 
 `│`
 
@@ -83,6 +83,8 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
     `├── ConsoleInput`
     
     `└── Menu`
+
+    `└── Colors`
 
 ---
 
@@ -102,8 +104,8 @@ Encargado de representar los elementos básicos de la baraja.
 ## Paquete `combinations`
 Gestiona la lógica de combinaciones de cartas.
 
-- **Interfaz `CombinationRule`** → Define las reglas de combinación  
 - **Clase `Combination`** *(implementa `CombinationRule`)* → Representa una combinación  
+- **Clase `CombinationSolver`** → Detecta la mejor combinación posible
 - **Enum `CombinationType`** → Define los tipos de combinación  
 
 ---
@@ -122,7 +124,7 @@ Define los distintos tipos de jugadores.
 
 - **Interfaz `Player`** → Define el comportamiento de un jugador  
 - **Clase `AbstractPlayer`** *(implementa `Player`)* → Base común de jugadores  
-- Clase `PlayerFactory` → Se implementa el Patrón Factory
+- Clase `PlayerFactory` → Se implementa el Patrón Factory para crear a los jugadores
 - **Clase `HumanPlayer`** *(hereda de `AbstractPlayer`)* → Jugador humano  
 - **Clase `AIPlayer`** *(hereda de `AbstractPlayer`)* → Jugador controlado por IA  
 
@@ -137,8 +139,7 @@ Gestiona la lógica de inteligencia artificial.
  Esta clase se utiliza como atributo en `AIPlayer` y es la encargada de decidir el comportamiento del jugador IA.
 
 >  **Mejoras futuras**
-> - `EstrategiaBasica`  
-> - `EstrategiaChinchon`  
+> - HardStrategy
 
 ---
 

@@ -8,8 +8,17 @@ import players.Player;
 import ui.ConsoleInput;
 import ui.Menu;
 
+
+/**
+ * Punto de entrada de la aplicación.
+ * Gestiona el menú principal y el flujo inicial del juego.
+ */
 public class Main {
 	
+	/**
+	 * Muestra el menú principal y gestiona la ejecución del juego.
+	 * Permite iniciar partida, ver reglas o salir del programa.
+	 */
 	public void show() {
     	ConsoleInput console = ConsoleInput.getInstance();
     	Menu menu = new Menu();
@@ -23,23 +32,28 @@ public class Main {
     		switch (option) {
     			case 1 -> {
     				Game game = configuration.config();
-    				console.escribirLinea("¡Comenzando el juego!");
+    				console.writeLine("¡Comenzando el juego!");
     				Optional<Player> winner = game.startGame();
     				if (winner.isPresent()) {
-    					console.escribirLinea("Ganador: " + winner.get().getName());
+    					console.writeSquareBlack("Ganador: " + winner.get().getName());
     				} else {
-    					console.escribirLinea("No se ha determinado ganador");
+    					console.writeLine("No se ha determinado ganador");
     				}
     			}
     			case 2 -> menu.showRules();
-    			case 3 -> console.escribir("Saliendo...");
-				default -> console.escribir("Opción no válida. Por favor, elige una opción del menú.");
+    			case 3 -> console.write("Saliendo...");
+				default -> console.write("Opción no válida. Por favor, elige una opción del menú.");
     		}
     	} while (option != 3);
     	
         console.cerrar();
 	}
 	
+	/**
+	 * Método principal que inicia la aplicación.
+	 *
+	 * @param args argumentos de línea de comandos
+	 */
 	public static void main(String[] args) {
 		new Main().show();
 	}

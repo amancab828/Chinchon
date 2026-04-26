@@ -5,12 +5,16 @@ import java.util.List;
 
 import cards.Card;
 import cards.Deck;
-import combinations.CombinationFactory;
+import combinations.CombinationSolver;
 
-// Estrategia para la IA
+/**
+ * Implementación básica de la estrategia de decisión de la IA.
+ * Selecciona acciones en función de la minimización de puntos en mano.
+ */
 public class Strategy implements AIStrategy {
-	private final CombinationFactory factory = new CombinationFactory();
+	private final CombinationSolver factory = new CombinationSolver();
 	
+	/** {@inheritDoc}*/
 	@Override
 	public Card turnDraw(Deck deck, List<Card> hand) {
 		Card topDiscard = deck.seeDiscardPile();
@@ -37,15 +41,12 @@ public class Strategy implements AIStrategy {
 		return cardDraw;
 	}
 
+	/** {@inheritDoc}*/
 	@Override
 	public Card turnDiscard(List<Card> hand) {
-		if (hand.isEmpty()) {
-			throw new IllegalArgumentException("hand must not be empty");
-		}
-
 		Card best = hand.get(0);
 		List<Card> after; //Para no modificar la original
-		int bestPoints = 99999;
+		int bestPoints = Integer.MAX_VALUE; // Valor máximo para ir comparando
 		int pts;
 
 		for (Card card : hand) {
@@ -63,6 +64,7 @@ public class Strategy implements AIStrategy {
 		return best;
 	}
 	
+	/** {@inheritDoc}*/
 	@Override
 	public boolean turnStand(List<Card> hand, int turn) {
 		// La validez real (<=5 y no primer turno) se comprueba fuera.
@@ -76,16 +78,20 @@ public class Strategy implements AIStrategy {
 		return stand;
 	}
 
-	// Para evitar repetir código
+	// Para evitar repetir código, usando el método calculatePoints de CombinationFactory
 	private int pointsOf(List<Card> hand) {
 		return factory.calculatePoints(hand, factory.getBestCombinations(hand));
 	}
 
-	/*
-	 * Método para calcular los puntos de una mano de 8 cartas (descartando una)*/
+	/**
+	 * Calcula la mejor puntuación posible tras descartar una carta.
+	 * Con el objetivo de saber que carta descartar de una mano de 8 cartas
+	 *
+	 * @param handWith8 mano con una carta adicional
+	 * @return mínima puntuación alcanzable
+	 */
 	private int bestPointsAfterDiscard(List<Card> handWith8) {
-		// Un valor cualquiera muy alto, para empezar comparando con un numero
-		int best = 99999;
+		int best = Integer.MAX_VALUE; // Valor máximo para ir comparando
 		List<Card> after;
 		
 		// Vamos probando descartando cada una de las cartas para coger la mejor puntuación posible

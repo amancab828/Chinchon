@@ -7,7 +7,13 @@ import cards.Card;
 import combinations.Combination;
 import games.Round;
 
-// Clase padre de los jugadores
+/**
+ * Clase abstracta que representa la base común de todos los jugadores del juego.
+ * Define atributos y comportamientos compartidos entre jugadores humanos e IA,
+ * incluyendo gestión de mano, puntuación, combinaciones y turnos.
+ *
+ * Implementa la interfaz Player y sirve como plantilla para sus subclases.
+ */
 public abstract class AbstractPlayer implements Player {
 	protected String name;
 	protected List<Card> hand;
@@ -70,7 +76,7 @@ public abstract class AbstractPlayer implements Player {
 		this.combinations = combinations;	
 	};
 	
-	// Método para mostrar la mano del jugador, una carta al lado de la otra, usando el método seeCard() de cada carta.
+	/** {@inheritDoc}*/
 	@Override
 	public String seeHand() {
 		StringBuilder sb = new StringBuilder();
@@ -92,19 +98,19 @@ public abstract class AbstractPlayer implements Player {
 	    return sb.toString();		
 	}
 	
-	// Añade carta a la mano
+	/** {@inheritDoc}*/
     @Override
     public void receiveCard(Card card) {
     	hand.add(card);
     };  
 
-    // Elimina carta de la mano
+	/** {@inheritDoc}*/
     @Override
     public void discardCard(Card card) {
     	hand.remove(card);
     };  
     
-	// Lógica del turno, depend de si el juhador es humano o IA, por eso es abstracta
+	/** {@inheritDoc}*/
 	@Override
 	public abstract void playTurn(Round round);
 	

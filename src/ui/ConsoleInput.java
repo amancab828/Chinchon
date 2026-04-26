@@ -4,16 +4,32 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import static ui.Colors.*;
 
-// Añadir como libreria mejor, o no hace falta??
+/**
+ * Clase encargada de gestionar la entrada y salida de datos por consola.
+ * Proporciona métodos seguros para leer distintos tipos de datos,
+ * validar entradas y mostrar mensajes personalizados.
+ *
+ * Implementa el patrón Singleton para garantizar una única instancia
+ * de gestión de consola durante toda la ejecución del programa.
+ */
 public class ConsoleInput {
 	private static ConsoleInput instance;
     private Scanner keyboard;
 
+    /**
+     * Crea una nueva instancia de gestión de consola.
+     *
+     * @param keyboard objeto Scanner utilizado para la entrada de datos
+     */
     public ConsoleInput(Scanner keyboard) {
         this.keyboard = keyboard;
     }
     
-    // Única instancia de ConsoleInput, patrón Singleton
+    /**
+     * Devuelve la única instancia disponible de ConsoleInput.
+     *
+     * @return instancia única de ConsoleInput
+     */
     public static ConsoleInput getInstance() {
 		if (instance == null) {
 			instance = new ConsoleInput(new Scanner(System.in));
@@ -21,35 +37,72 @@ public class ConsoleInput {
 		return instance;
 	}
     
-    // Limpiar el teclado
+    /**
+     * Limpia el buffer de entrada del teclado.
+     */
     private void cleanInput() {
         keyboard.nextLine();
     }
     
-    // Cerrar el teclado
+    /**
+     * Cierra el recurso Scanner utilizado por consola.
+     */
     public void cerrar() {
     	keyboard.close();
     }
     
-    public void escribirLinea(String texto) {
+    /**
+     * Muestra una línea de texto en consola.
+     *
+     * @param texto mensaje a mostrar
+     */
+    public void writeLine(String texto) {
         System.out.println(texto);
     }
-    public void escribir(String texto) {
+    
+    /**
+     * Muestra texto en consola sin salto de línea.
+     *
+     * @param texto mensaje a mostrar
+     */
+    public void write(String texto) {
         System.out.print(texto);
     }
-    public void escribirLineaRojo(String texto) {
+    
+    /**
+     * Muestra una línea de texto en color rojo.
+     *
+     * @param texto mensaje a mostrar
+     */
+    public void writeLineRed(String texto) {
         System.out.printf("%s%s%s\n", RED, texto, RESET);
     }
-    public void escribirRojo(String texto) {
+    
+    /**
+     * Muestra texto en color rojo sin salto de línea.
+     *
+     * @param texto mensaje a mostrar
+     */
+    public void writeRed(String texto) {
         System.out.printf("%s%s%s", RED, texto, RESET);
     }
-    public void escribirCuadrado(String texto) {
-    	System.out.printf("\n\n\n%s%s==============\n", WHITE, BLACK_BACKGROUND);
+    
+    /**
+     * Muestra un mensaje resaltado dentro de un recuadro visual.
+     *
+     * @param texto mensaje a mostrar
+     */
+    public void writeSquareBlack(String texto) {
+    	System.out.printf("\n%s%s==============\n", WHITE, BLACK_BACKGROUND);
         System.out.printf("%s\n", texto );
         System.out.printf("==============%s\n", RESET);
     }
     
-	// Retorna un int introducido por el usuario
+    /**
+     * Lee un número entero desde consola validando errores de formato.
+     *
+     * @return número entero introducido
+     */
 	public int readInt() {
 		int value = 0;
 		boolean error;
@@ -59,7 +112,7 @@ public class ConsoleInput {
 				value = keyboard.nextInt();
 				error = false;
 			} catch (InputMismatchException e) {
-				escribirLineaRojo("¡Error! Eso no es un número entero\n");
+				writeLineRed("¡Error! Eso no es un número entero\n");
 				error = true;
 			} finally {
 				cleanInput();
@@ -69,13 +122,19 @@ public class ConsoleInput {
 		return value;
 	}
 	
-	// Retorna un int introducido por el usuario cuyo valor esté en el rango [lowerBound, upperBound], ambos incluidos
+    /**
+     * Lee un número entero dentro de un rango específico.
+     *
+     * @param lowerBound valor mínimo permitido
+     * @param upperBound valor máximo permitido
+     * @return número entero válido dentro del rango
+     */
 	public int readIntInRange(int lowerBound, int upperBound) {
 		int value;
 		do {
 			value = readInt();
 			if (value < lowerBound || value > upperBound) {
-				escribirLineaRojo(
+				writeLineRed(
 					    String.format("¡Error! El número debe estar entre %d y %d", lowerBound, upperBound)
 					);
 			}
@@ -83,39 +142,57 @@ public class ConsoleInput {
 		return value;
 	}
 	
-	// Retorna una cadena de caracteres introducida por el usuario
+    /**
+     * Lee una cadena de texto desde consola.
+     *
+     * @return texto introducido
+     */
 	public String readString() {
 		return keyboard.nextLine();
 	}
 	
-	// Retorna una cadena que no puede ser vacia
+    /**
+     * Lee una cadena de texto no vacía.
+     *
+     * @return texto válido
+     */
 	public String readStringNonEmpty() {
 		String input;
 		do {
 			input = readString().trim();
 			if (input.isEmpty()) {
-				escribirLineaRojo("¡Error! No puedes dejarlo vacío.");
+				writeLineRed("¡Error! No puedes dejarlo vacío.");
 			}
 		} while (input.isEmpty());
 		return input;
 	}
 	
-	// Retorna un carácter introducido por el usuario. Si éste introduce más de un carácter, se le vuelve a solicitar
+    /**
+     * Lee un único carácter desde consola.
+     *
+     * @return carácter introducido
+     */
 	public char readChar() {
 	    String input;
 
 	    do {
 	        input = keyboard.nextLine();
 	        if (input.length() != 1) {
-	        	escribirLineaRojo("¡Error! Debes introducir solo un carácter.");
+	        	writeLineRed("¡Error! Debes introducir solo un carácter.");
 	        }
 	    } while (input.length() != 1);
 
 	    return input.charAt(0);
 	}
 	
-	/* Retorna un booleano a partir de un carácter introducido por el usuario, de manera que si coincide con affirmativeValue 
-	(en mayúsculas o minúsculas) retornará true y si coincide con negativeValue (en mayúsculas o minúsculas), retornará false */
+    /**
+     * Interpreta un carácter como valor booleano.
+     * Permite definir caracteres personalizados para sí/no.
+     *
+     * @param affirmativeValue carácter para respuesta afirmativa
+     * @param negativeValue carácter para respuesta negativa
+     * @return true si la respuesta es afirmativa
+     */
 	public boolean readBooleanUsingChar (char affirmativeValue, char negativeValue) {
 		char c;
 		
@@ -124,7 +201,7 @@ public class ConsoleInput {
 			c = Character.toLowerCase(c);
 			
 			if (c != Character.toLowerCase(affirmativeValue) && c != Character.toLowerCase(negativeValue)) {
-				escribirLineaRojo(
+				writeLineRed(
 					    String.format(
 					        "¡Error! Introduce un carácter válido.\n\"%c\" para sí o \"%c\" para no: ",
 					        affirmativeValue,negativeValue)

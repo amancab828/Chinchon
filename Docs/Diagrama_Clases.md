@@ -10,6 +10,7 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ### Clase `Card`
 - Clase que representa, palo y valor numérico. 
 - Incluye métodos para su visualización por consola
+- Necesita implementar los métodos de hashCode() y equals () para poder distinguir las cartas de las distintas barajas (atributo id:int)
 - [Ver código](../src/cards/card.java)
 
 ### Enum `Suit`
@@ -28,11 +29,14 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ## Paquete `combinations`
 ### Clase `Combination`
-- Pertenece al paquete `combinations`
+- Se encarga de la validación de cada tipo de combinación
 - [Ver código](../src/combinations/Combination.java)
-
+### Clase `CombinationSolver`
+- Es la clase encargada de generar, evaluar y seleccionar las mejores combinaciones de cartas
+- Es la clase más compleja
+- [Ver código](../src/combinations/CombinationSolver.java)
 ### Enum `CombinationType`
-- Pertenece al paquete `combinations`
+- Representa los tres tipos de combinaciones que hay en el juego
 - [Ver código](../src/combinations/CombinationType.java)
 
 ---
@@ -40,15 +44,17 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ## Paquete `games`
 
 ### Clase `Game`
-- Pertenece al paquete `games`
+- Representa una partida del juego Chinchón por completo, controla el flujo, rondas, jugadores...
 - [Ver código](../src/games/Game.java)
 
 ### Clase `Round`
-- Pertenece al paquete `games`
+- Es una ronda dentro de una partida
+- Se encarga de gestionar el reparto de cartas, turnos...
 - [Ver código](../src/games/Round.java)
 
 ### Clase `Configuration`
-- Pertenece al paquete `games`
+- Encargada de configurar la partida, pidiendo los datos al usuario. 
+- Usa el patron Factory, no sabiendo si crea un humano o IA, delega esta responsabilidad
 - [Ver código](../src/games/Configuration.java)
 
 ---
@@ -56,24 +62,27 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ## Paquete `players`
 
 ### Interfaz `Player`
-- Pertenece al paquete `players`
+- Interfaz que deben cumplir todos los jugadores IA o humanos
 - [Ver código](../src/players/Players.java)
 
 ### Clase `AbstractPlayer`
-- Pertenece al paquete `players`
+- Clase padre, con métodos comunes y abstracta
+- Implementa la interfaz Player
 - [Ver código](../src/players/AbstractPlayer.java)
 
 ### Clase `HumanPlayer`
-- Pertenece al paquete `players`
+- Hereda de AbstractPlayer
+- Representa a un humano
 - [Ver código](../src/players/HumanPlayer.java)
 
 ### Clase `AIPlayer`
-- Pertenece al paquete `players`
+- Hereda de AbstractPlayer
+- Representa a una IA, esta usa Strategy para tomar las decisiones
 - [Ver código](../src/players/AIPlayer.java)
 
 ### Clase PlayerFactory
-- Pertenece al paquete `players`
-- Se usa el patrón Factory
+- Fábrica encargada de crear instancias de jugadores
+- Implementa el patrón Factory para abstraer la creación
 - [Ver código](../src/players/PlayerFactory.java)
 
 ---
@@ -82,32 +91,33 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ### Interfaz `AIStrategy`
 - Pertenece al paquete `ai`
+- Define los métodos necesarios para cualquier estrategia de IA
 - [Ver código](../src/ai/AIStrategy.java)
 
 ### Clase `Strategy`
 - Pertenece al paquete `ai`
+- Implementa la interfaz AIStrategy
 - Se usa como atributo en `AIPlayer` y decide el comportamiento
 - [Ver código](../src/ai/Strategy.java)
 
 >  **Posibles mejoras futuras**
-> - Clase `EstrategiaBasica`
-> - Clase `EstrategiaChinchon`
+> - Clase `HardStrategy`
 
 ---
 
 ## Paquete `ui`
 
 ### Clase `Colors`
-- Pertenece al paquete `ui`
+- Define constantes con los colores ANSI
 - [Ver código](../src/ui/Colors.java)
 
 ### Clase `ConsoleInput`
-- Pertenece al paquete `ui`
-- Aquí se usa el patrón Singleton, para garantizar que la clase tenga una única instancia y proporcionar acceso global
+- Se encarga de gestionar la entrada y salida por consola
+- Se implementa el patrón Singleton, para asegurar una única instancia
 - [Ver código](../src/ui/ConsoleInput.java)
 
 ### Clase `Menu`
-- Pertenece al paquete `ui`
+- Encargada de mostrar la interfaz principal del juego en consola
 - [Ver código](../src/ui/Menu.java)
 
 ---
@@ -115,5 +125,5 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ## Paquete `app`
 
 ### Clase `Main`
-- Pertenece al paquete `app`
+- Clase principal que inicia la aplicación y controla el flujo del menú del juego
 - [Ver código](../src/app/Main.java)
