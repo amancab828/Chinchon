@@ -19,3 +19,7 @@
 10. Atributo menu???????
 
 11. Generar JAVADOC
+
+12. Poner bien los emoticonos que no se ven reglas.md
+
+13. Las relaciones de UML y codigo, rectificar y quitar relaciones innecesarias
