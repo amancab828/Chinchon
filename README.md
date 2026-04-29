@@ -19,6 +19,11 @@ Puedes consultar las reglas detalladas aquí:
 Explicación del diseño y arquitectura del proyecto:
 [Arquitectura de paquetes](Docs/Arquitectura.md)<br>[Diseño de clases](Docs/Diagrama_Clases.md)
 
+# Test / Pruebas
+El proyecto incluye pruebas unitarias desarrolladas con JUnit 5 para verificar el correcto funcionamiento de la lógica principal del juego, incluyendo validación de reglas, detección de combinaciones...
+[Test](Docs/Test.md)
+
+
 ---
 # Autor
 Antonio Mancilla Cabeza
