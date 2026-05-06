@@ -7,6 +7,7 @@ import cards.Card;
 import cards.Deck;
 import combinations.Combination;
 import combinations.CombinationSolver;
+import combinations.CombinationType;
 import players.Player;
 import ui.ConsoleInput;
 
@@ -42,6 +43,9 @@ public class Round {
 	
 	public Deck getDeck() {
 		return deck;
+	}
+	public int getMaxPoints() {
+		return game.getMaxPoints();
 	}
 	public void setRoundOver() {
 		roundOver = true;
@@ -103,19 +107,43 @@ public class Round {
 	private void scoreRound() {
 		List<Card> hand;
 		List<Combination> combinations;
-		int points;
-		CombinationSolver factory = new CombinationSolver();
-		
-		console.writeLineRed("\nFIN DE LA RONDA: PUNTUACIÓN");
+		int points, combinedCards;
+		CombinationSolver solver = new CombinationSolver();
+
+		console.writeLineWhite("\nFIN DE LA RONDA: PUNTUACIÓN");
 		for (Player p : players) {
 			hand = p.getHand();
-			combinations = factory.getBestCombinations(hand);
-			points = factory.calculatePoints(hand, combinations);
+			combinations = solver.getBestCombinations(hand);
+			points = solver.calculatePoints(hand, combinations);
+
+			// Comprobar si todas las cartas están combinadas
+			combinedCards = 0;
+			for (Combination c : combinations) {
+				combinedCards += c.getCards().size();
+			}
+			// Mayor a 0 porque si no el jugador que esta eliminado se le restarían 10 puntos
+			if (combinedCards == hand.size() && hand.size() > 0) {
+				points -= 10;
+				console.writeLineWhite(String.format("¡%s ha combinado todas sus cartas! Se le restan 10 puntos.", p.getName()));
+			}
+
 			p.setPoints(p.getPoints()+points);
-			console.writeLineRed(String.format("%s: Puntos de esta ronda: %d Puntos totales: %d", p.getName(), points, p.getPoints()));
+			console.writeLineWhite(String.format("%s: Puntos de esta ronda: %d Puntos totales: %d", p.getName(), points, p.getPoints()));
 			p.setHand(new ArrayList<>());
 			p.setTurn(1);
 		}
+	}
+	
+	public void winnerByChinchon(Player player) {
+		console.writeLine("¡Has conseguido un Chinchón! ¡Eres el ganador de la partida!");
+		game.setChinchonWinner(player);
+	}
+	
+	public boolean hasChinchon(List<Card> hand) {
+	    CombinationSolver solver = new CombinationSolver();
+
+	    return solver.getBestCombinations(hand).stream()
+	        .anyMatch(c -> c.getType() == CombinationType.CHINCHON);
 	}
 	
     /**

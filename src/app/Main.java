@@ -24,6 +24,8 @@ public class Main {
     	Menu menu = new Menu();
 		Configuration configuration = new Configuration();
     	int option;
+    	Game game;
+    	Optional<Player> winner;
     
     	do {
     		menu.showMenu();
@@ -31,9 +33,10 @@ public class Main {
 
     		switch (option) {
     			case 1 -> {
-    				Game game = configuration.config();
+    				game = configuration.config();
     				console.writeLine("¡Comenzando el juego!");
-    				Optional<Player> winner = game.startGame();
+    				winner = game.startGame();
+    				
     				if (winner.isPresent()) {
     					console.writeSquareBlack("Ganador: " + winner.get().getName());
     				} else {

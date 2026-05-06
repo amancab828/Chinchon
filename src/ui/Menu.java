@@ -38,5 +38,6 @@ public class Menu {
         console.writeLine("4. Combina cartas: tríos (mismo número) o escaleras (mismo palo consecutivo).");
         console.writeLine("5. Cierra con 6-7 cartas combinadas (7 cartas = -10 puntos).");
         console.writeLine("6. Las cartas sueltas suman puntos (2-7 valor, figuras=10).");
+        console.writeLine("7. Si consigues hacer chinchón, ganas la partida automáticamente: consiste en formar 7 cartas consecutivas del mismo palo.");
 	}
 }

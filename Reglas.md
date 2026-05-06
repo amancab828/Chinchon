@@ -36,7 +36,7 @@ Mínimo 3 cartas consecutivas del mismo palo
 `Ejemplo: 5🍷 6🍷 7🍷`
 
 * **<u>Chinchón</u>
-NO PUEDES CERRAR EN EL PRIMER TURNO
+Si se realiza esta combinación, gana automáticamente la partida, independientemente del número de puntos de los jugadores de la partida
 7 cartas consecutivas del mismo palo
 `Ejemplo: 4🪙 – 5🪙 – 6🪙 – 7🪙 – 10🪙 – 11🪙 – 12🪙`
 
@@ -63,21 +63,22 @@ En su turno:
 ---
 ## 3️. Cierre de ronda
 
+### ¿Cuándo puede cerrar?
 Un jugador puede **cerrar** si:
 - Tiene **6 o 7 cartas combinadas**
 
+ No puede cerrar si:
+- Supera el límite de puntos tras el conteo
+- O si es el primer turno
 ### Casos:
 **7 cartas combinadas**
 - Mano perfecta
 - **-10 puntos (bonus)**
 
- **6 cartas combinadas + 1 carta suelta**
+**6 cartas combinadas + 1 carta suelta**
 - La carta suelta debe valer **entre 1 y 5**
 
- No puede cerrar si:
-- Supera el límite de puntos tras el conteo
-
- Importante:
+### Importante:
 - Se cierra **después de robar y antes de descartar**
 - La carta que descartas es la que “cierra”
 

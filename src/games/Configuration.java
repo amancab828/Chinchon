@@ -71,7 +71,7 @@ public class Configuration {
 			
 			if (playerType) {
 				console.writeLine(String.format("Nombre del jugador %d: ", i + 1));
-				String name = console.readString();
+				String name = console.readStringNonEmpty();
 				players.add(playerFactory.createPlayer(name, true));
 			} else {
 				players.add(playerFactory.createPlayer(String.format("%d", i+1), false));
@@ -87,8 +87,8 @@ public class Configuration {
      * @return puntuación máxima permitida antes de perder
      */
     private int askMaxPoints() {
-        console.writeLine("Puntos máximos para perder:");
-        return console.readInt();
+        console.writeLine("Puntos máximos para perder (mayor a 5):");
+        return console.readIntGreaterThan(5);
     }
 
     /**

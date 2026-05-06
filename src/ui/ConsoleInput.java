@@ -54,10 +54,10 @@ public class ConsoleInput {
     /**
      * Muestra una línea de texto en consola.
      *
-     * @param texto mensaje a mostrar
+     * @param text mensaje a mostrar
      */
-    public void writeLine(String texto) {
-        System.out.println(texto);
+    public void writeLine(String text) {
+        System.out.println(text);
     }
     
     /**
@@ -65,36 +65,45 @@ public class ConsoleInput {
      *
      * @param texto mensaje a mostrar
      */
-    public void write(String texto) {
-        System.out.print(texto);
+    public void write(String text) {
+        System.out.print(text);
     }
     
     /**
      * Muestra una línea de texto en color rojo.
      *
-     * @param texto mensaje a mostrar
+     * @param text mensaje a mostrar
      */
-    public void writeLineRed(String texto) {
-        System.out.printf("%s%s%s\n", RED, texto, RESET);
+    public void writeLineRed(String text) {
+        System.out.printf("%s%s%s\n", RED, text, RESET);
     }
     
     /**
      * Muestra texto en color rojo sin salto de línea.
      *
-     * @param texto mensaje a mostrar
+     * @param text mensaje a mostrar
      */
-    public void writeRed(String texto) {
-        System.out.printf("%s%s%s", RED, texto, RESET);
+    public void writeRed(String text) {
+        System.out.printf("%s%s%s", RED, text, RESET);
+    }
+    
+    /**
+     * Muestra texto en color blanco con fonda blanco y salto de linea
+     *
+     * @param text mensaje a mostrar
+     */
+    public void writeLineWhite(String text) {
+        System.out.printf("%s%s%s%s\n", RED_BACKGROUND, WHITE, text, RESET);
     }
     
     /**
      * Muestra un mensaje resaltado dentro de un recuadro visual.
      *
-     * @param texto mensaje a mostrar
+     * @param text mensaje a mostrar
      */
-    public void writeSquareBlack(String texto) {
+    public void writeSquareBlack(String text) {
     	System.out.printf("\n%s%s==============\n", WHITE, BLACK_BACKGROUND);
-        System.out.printf("%s\n", texto );
+        System.out.printf("%s\n", text );
         System.out.printf("==============%s\n", RESET);
     }
     
@@ -139,6 +148,23 @@ public class ConsoleInput {
 					);
 			}
 		} while (value < lowerBound || value > upperBound);
+		return value;
+	}
+	
+	/**
+	 * Lee un número entero con la condición de ser mayor que un límite inferior dado.
+	 *
+	 * @param lowerBound límite inferior exclusivo que debe superar el número introducido
+	 * @return un número entero mayor que {@code lowerBound}
+	 */
+	public int readIntGreaterThan(int lowerBound) {
+		int value;
+		do {
+			value = readInt();
+			if (value <= lowerBound) {
+				System.err.printf("¡Error! El número debe ser mayor que %d\n", lowerBound);
+			}
+		} while (value <= lowerBound);
 		return value;
 	}
 	

@@ -17,31 +17,31 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 
 ---
 ## Estructura de los test
-### Paquete ai
-He aplicado test solo a la clase Strategy, ya que....
-StrategyTest: y hablo sobre sus pruebas
+### StrategyTest
+* Pertenece al paquete ai, y se centra en hacer pruebas a los métodos más complejos de Strategy
+	* turnDraw_drawDiscard →
+	* turnDraw_drawDeck →
+	* turnDiscard_minPoints →
+	* turnStand_returnsTrue →
+	* turnStand_returnsFalse →
+* [Ver código](../test/ai/strategyTest.java)
 
 ---
-### Paquete app
-Texto
+### CombinationSolverTest
+* Pertenece al paquete combinations, y se centra en hacer pruebas a los métodos más complejos de CombinationSolver
+	* calculatePoints_onlyCardsNotUsed →
+	* getBestCombinations_checkSetStraight →
+	* getBestCombinations_checkStraight →
+	* getBestCombinations_checkChinchon →
+* [Ver código](../test/combinations/CombinationSolverTest.java)
 
 ---
-### Paquete cards
-Texto 
+### GameTest
+* Pertenece al paquete games, y se centra en hacer pruebas a los métodos más complejos de Game
+	* getActivePlayers_excludePlayers →
+	* startGame_notWinner →
+	* startGame_afterChinchon →
+* [Ver código](../test/games/gameTest.java)
 
----
-### Paquete combinations
-Texto
 
----
-### Paquete games
-Texto
-
----
-### Paquete players
-Texto
-
----
-### Paquete u[]()i
-Texto
 

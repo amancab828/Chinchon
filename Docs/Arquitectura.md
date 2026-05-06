@@ -38,7 +38,7 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
 
 `│   ├── Combination`
 
-`│   ├── CombinationFactory`
+`│   ├── CombinationSolver`
 
 `│   └── CombinationType (enum)`
 

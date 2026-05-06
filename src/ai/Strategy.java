@@ -12,7 +12,7 @@ import combinations.CombinationSolver;
  * Selecciona acciones en función de la minimización de puntos en mano.
  */
 public class Strategy implements AIStrategy {
-	private final CombinationSolver factory = new CombinationSolver();
+	private final CombinationSolver combinations = new CombinationSolver();
 	
 	/** {@inheritDoc}*/
 	@Override
@@ -80,7 +80,7 @@ public class Strategy implements AIStrategy {
 
 	// Para evitar repetir código, usando el método calculatePoints de CombinationFactory
 	private int pointsOf(List<Card> hand) {
-		return factory.calculatePoints(hand, factory.getBestCombinations(hand));
+		return combinations.calculatePoints(hand, combinations.getBestCombinations(hand));
 	}
 
 	/**

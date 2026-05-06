@@ -76,7 +76,7 @@ public class AIPlayer extends AbstractPlayer {
      *
      * @return true si la IA puede plantarse
      */
-	private boolean turnStand() {
+	private boolean turnStand(Round round) {
 		int points;
         boolean stand = strategy.turnStand(hand, getTurn());
 
@@ -91,6 +91,10 @@ public class AIPlayer extends AbstractPlayer {
             }
         }
 
+		if (round.hasChinchon(hand)) {
+		    round.winnerByChinchon(this);
+		}
+		
         setTurn(getTurn() + 1);
         return stand;
 	}
@@ -109,7 +113,7 @@ public class AIPlayer extends AbstractPlayer {
 	public void playTurn(Round round) {
 		receiveCard(turnDraw(round.getDeck()));
 		turnDiscard(round.getDeck());
-		if (turnStand()) {
+		if (turnStand(round)) {
             console.writeLine(String.format("%s cierra la ronda.", name));
 			round.setRoundOver();
 		}

@@ -81,8 +81,8 @@ public class HumanPlayer extends AbstractPlayer {
      *
      * @return true si el jugador puede plantarse
      */
-	private boolean turnStand() {
-		CombinationSolver factory = new CombinationSolver();
+	private boolean turnStand(Round round) {
+		CombinationSolver combinationsSolver = new CombinationSolver();
 		List<Combination> combinations;
 		boolean stand;
 		console.write("¿Quieres plantarte/cerrar la ronda? (s/n): ");
@@ -90,8 +90,8 @@ public class HumanPlayer extends AbstractPlayer {
 		stand = console.readBooleanUsingChar('s', 'n');
 		
 		if (stand) {
-			combinations = factory.getBestCombinations(hand);
-			if (factory.calculatePoints(hand, combinations) > 5) {
+			combinations = combinationsSolver.getBestCombinations(hand);
+			if (combinationsSolver.calculatePoints(hand, combinations) > 5) {
 				console.writeLine("Tienes que puntuar 5 puntos o menos para poder plantarte");
 				stand = false;
 			}
@@ -99,6 +99,10 @@ public class HumanPlayer extends AbstractPlayer {
 				console.writeLine("No te puede plantar en el primer turno");
 				stand = false;
 			}
+		}
+		
+		if (round.hasChinchon(hand)) {
+		    round.winnerByChinchon(this);
 		}
 		
 		setTurn(getTurn()+1);
@@ -120,7 +124,7 @@ public class HumanPlayer extends AbstractPlayer {
 	public void playTurn(Round round) {
 		receiveCard(turnDraw(round.getDeck()));
 		turnDiscard(round.getDeck());
-		if (turnStand()) {
+		if (turnStand(round)) {
 			round.setRoundOver();
 		}
 	}

@@ -21,6 +21,7 @@ Explicación del diseño y arquitectura del proyecto:
 
 # Test / Pruebas
 El proyecto incluye pruebas unitarias desarrolladas con JUnit 5 para verificar el correcto funcionamiento de la lógica principal del juego, incluyendo validación de reglas, detección de combinaciones...
+Es necesario importar la librería de JUnit 5
 [Test](Docs/Test.md)
 
 
