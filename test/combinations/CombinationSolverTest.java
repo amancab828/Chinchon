@@ -21,10 +21,6 @@ class CombinationSolverTest {
 		return new Card(suit, value, nextId++);
 	}
 	
-	
-	/**
-	 * Caja blanca, estamos forzando un caso de soltar cartas que no están en combinaciones
-	 */
 	@ParameterizedTest
 	@ValueSource(ints = {1, 5, 10})
 	void calculatePoints_onlyCardsNotUsed(int value) {

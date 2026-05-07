@@ -12,17 +12,18 @@ Proyecto desarrollado en Java que implementa el juego de cartas Chinchón, permi
 ---
 # Reglas del juego
 Puedes consultar las reglas detalladas aquí:
-[Reglas del chinchón](Reglas.md)
+<br>[Reglas del chinchón](Reglas.md)
 
 ---
 # Documentación técnica
 Explicación del diseño y arquitectura del proyecto:
-[Arquitectura de paquetes](Docs/Arquitectura.md)<br>[Diseño de clases](Docs/Diagrama_Clases.md)
+<br>[Arquitectura de paquetes](Docs/Arquitectura.md)
+<br>[Diseño de clases](Docs/Diagrama_Clases.md)<br>
 
 # Test / Pruebas
 El proyecto incluye pruebas unitarias desarrolladas con JUnit 5 para verificar el correcto funcionamiento de la lógica principal del juego, incluyendo validación de reglas, detección de combinaciones...
 Es necesario importar la librería de JUnit 5
-[Test](Docs/Test.md)
+<br>[Test](Docs/Test.md)
 
 
 ---

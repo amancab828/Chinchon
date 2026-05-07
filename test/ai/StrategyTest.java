@@ -74,11 +74,6 @@ class StrategyTest {
 		assertNotEquals(discardTop, draw);
 	}
 	
-    /**
-     * Caja blanca, porque estoy forzando la condición:
-     * (pts < bestPoints || (pts == bestPoints && card.getValue() > best.getValue())
-     * 
-     */
     @ParameterizedTest
     @ValueSource(ints = {7, 2, 5}) // Son cartas que no ayudan en la mano de ejemplo
 	void turnDiscard_minPoints(int value) {

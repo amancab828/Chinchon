@@ -1,13 +1,6 @@
 
-1. TEST de entornos, terminar de explicarlo
+1. Generar JAVADOC y repasarlo
 
-2. Generar JAVADOC y repasarlo
+2. REVISAR UML
 
-3. REVISAR UML
-
-4. Probar los enlaces desde GitHub
-
-PREGUNTAR LO DE  (SOBRE LOS TEST)
-* CAJA NEGRA/BLANCA
-* PARAMETRIZADOS 
-* JAVADOC
+3. Probar los enlaces desde GitHub

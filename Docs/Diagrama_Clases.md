@@ -114,6 +114,7 @@ También se detallan los atributos y métodos más significativos, lo que permit
 ### Clase `ConsoleInput`
 - Se encarga de gestionar la entrada y salida por consola
 - Se implementa el patrón Singleton, para asegurar una única instancia
+- Como mejora en un futuro, sería recomendable eliminar las dependencias con ciertas clases como HumanPlayer, AIPlayer y Deck. Con el objetivo de centralizarla en una o dos clases en específico.
 - [Ver código](../src/ui/ConsoleInput.java)
 
 ### Clase `Menu`
