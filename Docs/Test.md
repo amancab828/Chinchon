@@ -26,7 +26,7 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 	* turnDiscard_minPoints → Verifica que se descarte la carta de menor puntuación cuando ninguna ayuda en la mano.
 	* turnStand_returnsTrue → Comprueba que el jugador se planta cuando puede hacerlo.
 	* turnStand_returnsFalse → Comprueba que la estrategia de la IA no se planta cuando no debe hacerlo.
-* [Ver código](../test/ai/strategyTest.java)
+* [Ver código](../test/ai/StrategyTest.java)
 
 ---
 ### CombinationSolverTest
@@ -43,7 +43,7 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 	* getActivePlayers_excludePlayers → Comprueba que los jugadores eliminados dejan de estar activos.
 	* startGame_notWinner → Verifica una partida sin ganador.
 	* startGame_afterChinchon → Verifica una partida con ganador tras realizar un Chinchón.
-* [Ver código](../test/games/gameTest.java)
+* [Ver código](../test/games/GameTest.java)
 
 ---
 ## Mejora a futuro

@@ -11,19 +11,19 @@ También se detallan los atributos y métodos más significativos, lo que permit
 - Clase que representa, palo y valor numérico. 
 - Incluye métodos para su visualización por consola
 - Necesita implementar los métodos de hashCode() y equals () para poder distinguir las cartas de las distintas barajas (atributo id:int)
-- [Ver código](../src/cards/card.java)
+- [Ver código](../src/cards/Card.java)
 
 ### Enum `Suit`
 - Este enum, contiene los 4 palos y dos atributos:
 	- Contiene el símbolo (🌿,🍷,⚔️, 🟡)
 	- Contiene el color
-- [Ver código](../src/cards/suit.java)
+- [Ver código](../src/cards/Suit.java)
 
 ### Clase `Deck`
 - Representa la baraja del juego, encargada de gestionar el conjunto de cartas disponibles y el montón de descarte.
 - Permite crear una o varias barajas españolas, barajarlas, robar cartas y gestionar el flujo de cartas entre la baraja y el descarte.
 - Además, controla la regeneración de la baraja cuando esta se queda sin cartas.
-- [Ver código](../src/cards/deck.java)
+- [Ver código](../src/cards/Deck.java)
 
 ---
 
