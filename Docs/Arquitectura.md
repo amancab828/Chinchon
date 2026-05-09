@@ -80,11 +80,11 @@ Lo que favorece la mantenibilidad, reutilización y escalabilidad del código.
 
 `└── ui`
 
-    `├── ConsoleInput`
+`│   ├── ConsoleInput`
     
-    `└── Menu`
+`│   └── Menu`
 
-    `└── Colors`
+`│   └── Colors`
 
 ---
 

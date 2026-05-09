@@ -63,7 +63,7 @@ También se detallan los atributos y métodos más significativos, lo que permit
 
 ### Interfaz `Player`
 - Interfaz que deben cumplir todos los jugadores IA o humanos
-- [Ver código](../src/players/Players.java)
+- [Ver código](../src/players/Player.java)
 
 ### Clase `AbstractPlayer`
 - Clase padre, con métodos comunes y abstracta
