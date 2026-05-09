@@ -47,7 +47,7 @@ public class ConsoleInput {
     /**
      * Cierra el recurso Scanner utilizado por consola.
      */
-    public void cerrar() {
+    public void close() {
     	keyboard.close();
     }
     

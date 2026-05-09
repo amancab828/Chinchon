@@ -21,7 +21,7 @@ Explicación del diseño y arquitectura del proyecto:
 <br>[Diseño de clases](Docs/Diagrama_Clases.md)<br>
 
 # Test / Pruebas
-El proyecto incluye pruebas unitarias desarrolladas con JUnit 5 para verificar el correcto funcionamiento de la lógica principal del juego, incluyendo validación de reglas, detección de combinaciones...
+El proyecto incluye pruebas unitarias desarrolladas con JUnit 5 para verificar el correcto funcionamiento de la lógica principal del juego, incluyendo validación de reglas, detección de combinaciones...<br>
 Es necesario importar la librería de JUnit 5
 <br>[Test](Docs/Test.md)
 

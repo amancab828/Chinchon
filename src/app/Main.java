@@ -49,7 +49,7 @@ public class Main {
     		}
     	} while (option != 3);
     	
-        console.cerrar();
+        console.close();
 	}
 	
 	/**

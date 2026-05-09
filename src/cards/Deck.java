@@ -41,7 +41,7 @@ public class Deck {
 	/**
 	 * Mezcla aleatoriamente las cartas del mazo.
 	 */
-	public void shuffle() {
+	private void shuffle() {
 		Collections.shuffle(cards);
 	}
 	
@@ -57,7 +57,7 @@ public class Deck {
 	/**
 	 * Devuelve la última carta del descarte sin retirarla.
 	 *
-	 *<p>(En ningún momento la pila de descarte puede llegar a estar vacia)</p>
+	 *<p>En ningún momento la pila de descarte puede llegar a estar vacia</p>
 	 *
 	 * @return última carta del descarte
 	 */

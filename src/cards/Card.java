@@ -14,10 +14,11 @@ public class Card {
 	private int id; //Para detectar cartas repetidas, no comparo con suit y value por si hay dos barajas
 	
 	/**
-	 * Constructor: Crea una nueva carta con un palo y un valor.
+	 * Constructor: Crea una nueva carta con un palo, un valor y un valor de identificación único.
 	 *
 	 * @param suit palo de la carta
 	 * @param value valor numérico de la carta
+	 * @param id identificador único de la carta (para detectar duplicados)
 	 */
 	public Card(Suit suit, int value, int id) {
 		this.suit = suit;
