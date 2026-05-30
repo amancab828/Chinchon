@@ -27,6 +27,8 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 	* turnStand_returnsTrue → Comprueba que el jugador se planta cuando puede hacerlo.
 	* turnStand_returnsFalse → Comprueba que la estrategia de la IA no se planta cuando no debe hacerlo.
 * [Ver código](../test/ai/StrategyTest.java)
+*  Ejecución:
+![StrategyTest ejecución](../assets/StrategyTest.png)
 
 ---
 ### CombinationSolverTest
@@ -36,6 +38,8 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 	* getBestCombinations_checkStraight → Comprueba el salto especial de la baraja española (7 → 10).
 	* getBestCombinations_checkChinchon → Verifica que se detecte correctamente un Chinchón.
 * [Ver código](../test/combinations/CombinationSolverTest.java)
+* Ejecución:
+![CombinationSolverTest ejecución](../assets/CombinationSolverTest.png)
 
 ---
 ### GameTest
@@ -44,6 +48,8 @@ Esta librería permite crear y ejecutar pruebas unitarias, incluyendo tests para
 	* startGame_notWinner → Verifica una partida sin ganador.
 	* startGame_afterChinchon → Verifica una partida con ganador tras realizar un Chinchón.
 * [Ver código](../test/games/GameTest.java)
+* Ejecución:
+![GameTest ejecución](../assets/GameTest.png)
 
 ---
 ## Mejora a futuro
