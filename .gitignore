@@ -3,26 +3,53 @@
 
 # 🔹 Eclipse
 .metadata/
-.classpath
 .project
+.classpath
 .settings/
+
+# 🔹 IntelliJ IDEA
+.idea/
+*.iml
+
+# 🔹 VS Code
+.vscode/
 
 # 🔹 Archivos compilados de Java
 *.class
 
-# 🔹 Carpeta de build (según proyecto)
+# 🔹 Carpetas de compilación
 bin/
 build/
 out/
 target/
 
+# 🔹 Dependencias descargadas (si las hubiera)
+.gradle/
+
 # 🔹 Logs
 *.log
 
-# 🔹 Sistema (Windows)
-.DS_Store
-Thumbs.db
-
 # 🔹 Archivos temporales
 *.tmp
+*.temp
 *.swp
+*.swo
+*~
+
+# 🔹 Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 🔹 Archivos de error de la JVM
+hs_err_pid*
+replay_pid*
+
+# 🔹 Archivos comprimidos (opcional)
+*.zip
+*.rar
+*.7z
+
+# 🔹 Variables de entorno (si existen)
+.env
+.env.*
